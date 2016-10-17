@@ -28,6 +28,8 @@ if (isset($_POST['submit'])) {
     try {
         $userService->login($username, $password);
     } catch (Exception $e) {
-        echo $e->getMessage();
+        require_once 'services/ErrorService.php';
+        $errorService = new \services\ErrorService();
+        $errorService->setError($e->getMessage());
     }
 }
