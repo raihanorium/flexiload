@@ -1,22 +1,4 @@
 <?php
-require_once 'services/Database.php';
-require_once 'model/User.php';
-
-$db = new \services\Database();
-
-$db->updateQuery(
-    "insert into user(username, email, full_name, password) VALUES (:username, :email, :full_name, :password)",
-    array(
-        ':username'=>'abul',
-        ':email'=> 'email@abul.com',
-        ':full_name'=>'Mr. Abul',
-        ':password'=>'pass'
-        )
-);
-
-$users = $db->selectQuery("select * from user", \model\User::class);
-var_dump($users);
-
 	require 'appConfig.php';
 	session_start();
 	require 'service.php';

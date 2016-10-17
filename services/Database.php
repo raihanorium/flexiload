@@ -9,8 +9,7 @@
 namespace services;
 
 
-class Database
-{
+class Database {
     private $host = "localhost";
     private $username = "root";
     private $password = "";
@@ -22,13 +21,11 @@ class Database
     /**
      * Database constructor.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->pdo = new \PDO('mysql:host=' . $this->host . ';dbname=' . $this->databaseName . '', $this->username, $this->password);
     }
 
-    public function selectQuery($query, $class)
-    {
+    public function selectQuery($query, $class) {
         $allData = array();
 
         try {
@@ -46,8 +43,7 @@ class Database
         return $allData;
     }
 
-    public function updateQuery($query, $parameters)
-    {
+    public function updateQuery($query, $parameters) {
         try {
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 

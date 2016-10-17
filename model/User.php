@@ -9,7 +9,7 @@
 namespace model;
 
 
-class User{
+class User {
     public $id;
     public $username;
     public $email;

@@ -11,10 +11,8 @@ namespace services;
 
 use model\User;
 
-class UserService
-{
-    public function create($user)
-    {
+class UserService {
+    public function create($user) {
         if (!($user instanceof User)) {
             throw new \Exception('User is not an instance of class');
         }
@@ -31,8 +29,7 @@ class UserService
         );
     }
 
-    public function getAll()
-    {
+    public function getAll() {
         $db = new Database();
         return $db->selectQuery("select * from user", User::class);
     }
