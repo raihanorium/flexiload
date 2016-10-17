@@ -8,6 +8,7 @@
 
 namespace services;
 
+require_once 'Database.php';
 
 use model\User;
 
