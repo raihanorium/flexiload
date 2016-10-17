@@ -25,13 +25,13 @@ class Database {
         $this->pdo = new \PDO('mysql:host=' . $this->host . ';dbname=' . $this->databaseName . '', $this->username, $this->password);
     }
 
-    public function selectQuery($query, $class) {
+    public function selectQuery($query, $parameters, $class) {
         $allData = array();
 
         try {
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute();
+            $stmt->execute($parameters);
             $stmt->setFetchMode(\PDO::FETCH_CLASS, $class);
             while ($user = $stmt->fetch()) {
                 array_push($allData, $user);

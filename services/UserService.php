@@ -31,6 +31,31 @@ class UserService {
 
     public function getAll() {
         $db = new Database();
-        return $db->selectQuery("select * from user", User::class);
+        return $db->selectQuery("SELECT * FROM user", null, User::class);
+    }
+
+    public function get($id) {
+        $db = new Database();
+        return $db->selectQuery("SELECT * FROM user WHERE id = :id", array(':id' => $id), User::class);
+    }
+
+    public function login($username, $password) {
+        $db = new Database();
+        $user = $db->selectQuery(
+            "SELECT * FROM user WHERE username=:username AND password=:password",
+            array(':username' => $username, ':password' => $password), User::class);
+
+        if ($user) {
+            $_SESSION['LOGGED_IN_USER'] = $username;
+            header("Location: .");
+        } else {
+            throw new \Exception('Login failed');
+        }
+    }
+
+    public function logOut() {
+        session_unset();
+        header("Location: .");
+        die();
     }
 }
