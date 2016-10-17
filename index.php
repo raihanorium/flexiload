@@ -1,7 +1,6 @@
 <?php
 	require 'appConfig.php';
 	session_start();
-	require 'service.php';
 ?>
 
 <!DOCTYPE html>

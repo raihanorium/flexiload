@@ -55,5 +55,7 @@ class Database {
         } catch (\Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
+
+        return -1;
     }
 }
