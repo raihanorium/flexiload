@@ -9,6 +9,9 @@ if(!isset($_SESSION['LOGGED_IN_USER'])){
 			case 'logout':
 				$view = 'logout.php';
 			break;
+			case 'profile':
+				$view = 'profile.php';
+			break;
 			
 			default:
 			$view = 'home.php';

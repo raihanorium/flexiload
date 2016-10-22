@@ -30,25 +30,29 @@ session_start();
 <div class="container">
     <?php if (isset($_SESSION['LOGGED_IN_USER'])) require('navbar.php'); ?>
 
+    <div id="message_placeholder"></div>
+
     <?php require('view.php'); ?>
 
-    <?php
-    require_once 'services/ErrorService.php';
-    $errorService = new \services\ErrorService();
-    if ($errors = $errorService->getErrors()) {
-        echo $errors;
-        echo '
-            <div class="alert alert-danger">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                $errors
-            </div>';
-    }
-    ?>
 </div>
 
 <!-- jQuery -->
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap JavaScript -->
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>​
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        <?php
+        require_once 'services/ErrorService.php';
+        $errorService = \services\ErrorService::Instance();
+        if ($errors = $errorService->getErrors()) {
+            $errorMessages = implode('- ', $errors);
+            echo 'bootstrap_alert.error("' . $errorMessages . '");';
+        }
+        ?>
+    });
+</script>
 </body>
 </html>

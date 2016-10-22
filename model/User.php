@@ -15,6 +15,7 @@ class User {
     public $email;
     public $full_name;
     public $password;
+    public $role;
     public $is_active;
     public $created_at;
 }

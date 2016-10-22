@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         $userService->login($username, $password);
     } catch (Exception $e) {
         require_once 'services/ErrorService.php';
-        $errorService = new \services\ErrorService();
+        $errorService = \services\ErrorService::Instance();
         $errorService->setError($e->getMessage());
     }
 }

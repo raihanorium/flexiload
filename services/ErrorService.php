@@ -9,8 +9,24 @@
 namespace services;
 
 
-class ErrorService {
+final class ErrorService {
     private $errors = array();
+
+    /**
+     * ErrorService constructor.
+     */
+    private function __construct(){
+
+    }
+
+    public static function Instance() {
+        static $inst = null;
+        if ($inst === null) {
+            $inst = new ErrorService();
+        }
+        return $inst;
+    }
+
 
     public function setError($error) {
         array_push($this->errors, $error);

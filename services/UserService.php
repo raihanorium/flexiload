@@ -47,7 +47,7 @@ class UserService {
             array(':username' => $username, ':password' => $password), User::class);
 
         if ($user) {
-            $_SESSION['LOGGED_IN_USER'] = $username;
+            $_SESSION['LOGGED_IN_USER'] = $user[0];
             header("Location: .");
         } else {
             throw new \Exception('Login failed');
